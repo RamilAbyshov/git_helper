@@ -55,15 +55,15 @@
 ```mermaid
 graph LR
     untracked["untracked<br/>(неотслеживаемый)"]
-    modified["modified<br/>(изменённый)"]
     staged["staged<br/>(в списке на коммит)<br/>+ tracked"]
     tracked["tracked<br/>(отслеживаемый)"]
+    modified["modified<br/>(изменённый)"]
 
-    untracked -- "git add" --> staged
-    modified -- "git add" --> staged
-    staged -- "git commit" --> tracked
-    staged -- "Изменения" --> modified
-    tracked -- "Изменения" --> modified
+    untracked -->|git add| staged
+    modified -->|git add| staged
+    staged -->|git commit| tracked
+    staged -->|Изменения| modified
+    tracked -->|Изменения| modified
 
     class untracked blueNode
     class staged orangeNode
@@ -72,9 +72,10 @@ graph LR
     
     classDef blueNode fill:#1E88E5,stroke:#000,color:#fff,rx:10,ry:10
     classDef orangeNode fill:#FF8A65,stroke:#000,color:#000,rx:10,ry:10
-    classDef whiteNode fill:#ffffff,stroke:#FF8A65,stroke-width:2px,color:#000,rx:10,ry:10
-    
-    linkStyle 0,1,2,3,4 stroke:#000,stroke-width:2px,color:#fff,fill:#ffffff
+    classDef whiteNode fill:#fff,stroke:#FF8A65,stroke-width:2px,color:#000,rx:10,ry:10
+
+    linkStyle 0,1,2,3,4 stroke:#000,stroke-width:2px,color:#000
+
 ```
 
 
