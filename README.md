@@ -43,3 +43,25 @@
 
 * В числе прочих файлов в папке `.git` есть служебный файл `HEAD`. Он указывает на самый свежий коммит.
 * Вместо хеша последнего коммита можно написать слово `HEAD` — Git вас поймёт.
+
+
+#### Статусы
+
+* Статусом `untracked` помечается файл, о существовании которого Git знает, но не следит за изменениями в нём. Этот статус — противоположность `tracked`, в который попадают все файлы, отслеживаемые Git.
+* Файл переходит в статус `staged` после выполнения `git add`.
+* Статус `modified` означает, что файл был изменён.
+* Большинство файлов в проектах «шагает» по следующему циклу:
+
+```mermaid
+sequenceDiagram
+	participant untracked
+	participant tracked
+	participant modified
+	participant staged
+	untracked->>staged: git add
+	staged->>modified: Изменения
+	staged->>tracked: git commit
+	tracked->>modified: Изменения
+	modified->>staged: git add
+```
+
