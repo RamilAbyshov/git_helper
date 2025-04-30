@@ -54,14 +54,10 @@
 
 ```mermaid
 sequenceDiagram
-	participant untracked
-	participant tracked
-	participant modified
-	participant staged
-	untracked->>staged: git add
-	staged->>modified: Изменения
-	staged->>tracked: git commit
-	tracked->>modified: Изменения
-	modified->>staged: git add
+	untracked-->staged: git add
+	staged-->modified: Изменения
+	staged-->tracked: git commit
+	tracked-->modified: Изменения
+	modified-->staged: git add
 ```
 
