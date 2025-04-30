@@ -53,27 +53,28 @@
 * Большинство файлов в проектах «шагает» по следующему циклу:
 
 ```mermaid
-graph TD
+graph LR
     untracked["untracked<br/>(неотслеживаемый)"]
     modified["modified<br/>(изменённый)"]
-    staged["staged<br/>(в списке на коммит) + tracked"]
+    staged["staged<br/>(в списке на коммит)<br/>+ tracked"]
     tracked["tracked<br/>(отслеживаемый)"]
 
     untracked -- "git add" --> staged
-    staged -- "Изменения" --> modified
-    staged -- "git commit" --> tracked
-    tracked -- "Изменения" --> modified
     modified -- "git add" --> staged
+    staged -- "git commit" --> tracked
+    staged -- "Изменения" --> modified
+    tracked -- "Изменения" --> modified
 
     class untracked blueNode
     class staged orangeNode
-    class modified orangeBorder
-    class tracked orangeBorder
-
-    classDef blueNode fill:#007bff,stroke:#000,color:#fff
-    classDef orangeNode fill:#ff7f50,stroke:#000,color:#000
-    classDef orangeBorder stroke:#ff7f50,stroke-width:2px,color:#000
-
+    class modified whiteNode
+    class tracked whiteNode
+    
+    classDef blueNode fill:#1E88E5,stroke:#000,color:#fff,rx:10,ry:10
+    classDef orangeNode fill:#FF8A65,stroke:#000,color:#000,rx:10,ry:10
+    classDef whiteNode fill:#ffffff,stroke:#FF8A65,stroke-width:2px,color:#000,rx:10,ry:10
+    
+    linkStyle 0,1,2,3,4 stroke:#000,stroke-width:2px,color:#fff,fill:#ffffff
 ```
 
 
